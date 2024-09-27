@@ -1,0 +1,53 @@
+<div class="mat-elevation-z8">
+    <mat-toolbar>
+      <span>Task List</span>
+      <span class="spacer"></span>
+      <button mat-button routerLink="/tasks/new">New Task</button>
+    </mat-toolbar>
+  
+    <table mat-table [dataSource]="tasks" class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="assignedTo">
+        <th mat-header-cell *matHeaderCellDef> Assigned To </th>
+        <td mat-cell *matCellDef="let task"> {{task.assignedTo}} </td>
+      </ng-container>
+  
+      
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let task"> {{task.status}} </td>
+      </ng-container>
+  
+      
+      <ng-container matColumnDef="dueDate">
+        <th mat-header-cell *matHeaderCellDef> Due Date </th>
+        <td mat-cell *matCellDef="let task"> {{task.dueDate}} </td>
+      </ng-container>
+  
+    
+      <ng-container matColumnDef="priority">
+        <th mat-header-cell *matHeaderCellDef> Priority </th>
+        <td mat-cell *matCellDef="let task"> {{task.priority}} </td>
+      </ng-container>
+  
+      
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let task"> {{task.description}} </td>
+      </ng-container>
+  
+      
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let task">
+          <button mat-icon-button color="warn" (click)="deleteTask(task.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="['assignedTo', 'status', 'dueDate', 'priority', 'description', 'actions']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['assignedTo', 'status', 'dueDate', 'priority', 'description', 'actions'];"></tr>
+    </table>
+  </div>
+  
